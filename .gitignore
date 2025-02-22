@@ -1,0 +1,12 @@
+__pycache__
+.venv
+.mypy_cache
+.pytest_cache
+.idea
+.env
+chroma_db/
+js_server/node_modules/
+js_server/dist/
+js_server/build/
+js_server/static/
+.ruff_cache/
