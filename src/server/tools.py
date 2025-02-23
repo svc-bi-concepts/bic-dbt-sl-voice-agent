@@ -4,7 +4,6 @@ import logging
 from collections.abc import Sequence
 from datetime import datetime
 from typing import Any
-from langchain_community.tools import TavilySearchResults
 from langchain_core.tools import BaseTool
 from pydantic import BaseModel, Field
 from starlette.applications import Starlette
@@ -377,17 +376,14 @@ class SemanticLayerQueryTool(BaseTool):
 
 def create_tools(app: Starlette) -> Sequence[BaseTool]:
     """Create the tools with access to application state."""
-    tavily_tool = TavilySearchResults(
-        max_results=5,
-        include_answer=True,
-        description=(
-            "This is a search tool for accessing the internet.\n\n"
-            "Let the user know you're asking your friend Tavily for help before you call the tool."
-        ),
-    )
 
     return [
         SemanticLayerSearchTool(app=app),
         SemanticLayerQueryTool(app=app),
-        tavily_tool,
+    ]
+
+    return [
+        SemanticLayerSearchTool(app=app),
+        SemanticLayerQueryTool(app=app),
+
     ]
