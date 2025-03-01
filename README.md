@@ -18,7 +18,7 @@ The application consists of:
 
 ## Prerequisites
 
-- Python 3.12+
+- Python 3.12 (not 3.13)
 - OpenAI API key with access to voice models
 - dbt semantic layer environment and credentials
 
@@ -42,27 +42,24 @@ SL__TOKEN=your_semantic_layer_token
 2. [Optional] Install dependencies:
 
 Create a virtual environment:
-
+```bash
+python -m venv .venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
-uv venv
+Install the dependencies:
+```bash
+pip install -r requirements.txt
 ```
-
-Include the development dependencies:
-```
-uv sync --all-extras
-```
-
-Or, install the dependencies without the development dependencies:
-
-```
-uv sync
+On macOS, you might need to install certificates to avoid SSL verification issues:
+```bash
+/Applications/Python\ 3.12/Install\ Certificates.command
 ```
 
 ## Running the Application
 
 1. Start the backend server:
 ```bash
-uv run src/server/app.py
+python -m src.server.app
 ```
 
 2. Open your browser to `http://localhost:3000`
